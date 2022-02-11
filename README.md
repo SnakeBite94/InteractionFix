@@ -14,7 +14,7 @@ Most of the patch logic was however rewritten from scratch since then, and more 
 
 ### How to use
 1. Download [Unity Mod Manager](https://www.nexusmods.com/site/mods/21), unzip somewhere
-2. Download latest [release](https://github.com/SnakeBite94/MouseFix/releases/latest) of this mod
+2. Download latest [release](https://github.com/SnakeBite94/InteractionFix/releases/latest) of this mod
 3. Run UnityModManager.exe
 4. Choose "Car Mechanic Simulator 2018" from Game selection dropdown
 5. Set game Folder (by default "C:\Program Files (x86)\Steam\steamapps\common\Car Mechanic Simulator 2018")
