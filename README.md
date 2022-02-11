@@ -1,7 +1,7 @@
 # Mouse and Interaction Fixes
 Mod that fixes several interacion issues in Car Mechanic Simulator 2018. 
-This was originally a fork of MouseFix mod by Sauler (https://github.com/Sauler/MouseFix), converted to Unity Mod Manager instead of BepInEx.
-Most of the patch logic was however rewritten from scratch since then, and more interaction functionality and fixes were added.
+This was originally a fork of MouseFix mod by Sauler (https://github.com/Sauler/MouseFix), just to move it to Unity Mod Manager.
+Most of the patch logic was however written from scratch, and more interaction functionality and fixes were added.
 
 ### Features:
 - Enables the game to run in background.
