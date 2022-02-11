@@ -71,7 +71,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-if $(ConfigurationName) == Release (powershell Compress-Archive -Path '$(TargetDir)MouseFix.dll', '$(TargetDir)Info.json' -DestinationPath '$(SolutionDir)PublishOutput\InteractionFix.zip' -Force)
+if $(ConfigurationName) == Release (powershell Compress-Archive -Path '$(TargetDir)InteractionFix.dll', '$(TargetDir)Info.json' -DestinationPath '$(SolutionDir)PublishOutput\InteractionFix.zip' -Force)
 
 if $(ConfigurationName) == Release (copy /Y "$(TargetDir)InteractionFix.dll" "G:\Steam\steamapps\common\Car Mechanic Simulator 2018\Mods\InteractionFix\")
 if $(ConfigurationName) == Release (copy /Y "$(TargetDir)Info.json" "G:\Steam\steamapps\common\Car Mechanic Simulator 2018\Mods\InteractionFix\")

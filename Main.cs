@@ -15,7 +15,7 @@ namespace InteractionFix
         public static bool Load(ModEntry mod)
         {
             Main.mod = mod;
-            mod.OnToggle = OnToggle;
+            mod.OnToggle = OnToggle;            
             return true;
         }
 

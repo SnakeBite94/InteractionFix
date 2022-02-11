@@ -1,6 +1,6 @@
 {
     "Id": "InteractionFix",
-    "DisplayName": "InteractionFix",
+    "DisplayName": "Interaction Fix",
     "Author": "Sauler, SnakeBite94",
     "Version": "3.0.0",
     "EntryMethod": "InteractionFix.Main.Load",
