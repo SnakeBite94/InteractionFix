@@ -10,8 +10,13 @@ namespace InteractionFix
     {
         private static bool Prefix(ref Vector2 ___screenPos, ref RectTransform ___Cursor, ref bool ___cursorIsEnable)
         {
-            if (___cursorIsEnable)
+            if (!Main.Enabled || !Main.Settings.DisableMouseSmoothing)
             {
+                return true;
+            }
+
+            if (___cursorIsEnable)
+            {                
                 ___screenPos.x = Input.mousePosition.x;
                 ___screenPos.y = Input.mousePosition.y;
                 ___Cursor.transform.position = ___screenPos;

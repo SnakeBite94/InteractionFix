@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionFix", "InteractionFix.csproj", "{5F353C2C-73D3-45A3-9A12-B87F114ACAC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionFix", "InteractionFix\InteractionFix.csproj", "{5F353C2C-73D3-45A3-9A12-B87F114ACAC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6781F21D-B205-4044-A5C0-D940D569AF08}"
+	ProjectSection(SolutionItems) = preProject
+		Changelog.md = Changelog.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS18Runner", "CMS18Runner\CMS18Runner.csproj", "{F179A486-7093-4F12-9A9B-2C02588703A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,10 @@ Global
 		{5F353C2C-73D3-45A3-9A12-B87F114ACAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F353C2C-73D3-45A3-9A12-B87F114ACAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F353C2C-73D3-45A3-9A12-B87F114ACAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F179A486-7093-4F12-9A9B-2C02588703A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F179A486-7093-4F12-9A9B-2C02588703A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F179A486-7093-4F12-9A9B-2C02588703A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F179A486-7093-4F12-9A9B-2C02588703A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

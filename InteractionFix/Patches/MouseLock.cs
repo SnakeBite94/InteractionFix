@@ -10,16 +10,21 @@ namespace InteractionFix
     {
         public static bool Prefix(bool isLocked, ref bool ___cursorIsEnable)
         {
+            if (!Main.Enabled) // this Patch has to run regardless of its setting... It fixes mouse behavior in game.
+            {
+                return true;
+            }
+
             // if UnityModManager window, we do not change the cursor or the capture, to enable users to unteract with it!
             if (UnityModManagerNet.UnityModManager.UI.Instance.Opened)
             {
-                return false;
+                return true;
             }
 
             Cursor.visible = false;
             if (___cursorIsEnable)
-            {                
-                Cursor.lockState = CursorLockMode.None;
+            {
+                Cursor.lockState = Main.Settings.UnlockMouse ? CursorLockMode.None : CursorLockMode.Confined;
             } else
             {                
                 Cursor.lockState = CursorLockMode.Locked;
