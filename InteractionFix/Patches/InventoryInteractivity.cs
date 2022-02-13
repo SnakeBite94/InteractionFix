@@ -8,8 +8,6 @@ namespace InteractionFix.Patches
     [HarmonyPatch(typeof(GameScript), "Update")]
     internal class InventoryInteractivity
     {
-        private static string lastShop;
-
         [HarmonyPrefix]
         internal static void Update()
         {
@@ -23,7 +21,7 @@ namespace InteractionFix.Patches
 
             var isInventoryActive = ui.IsActive(UIWindows.Inventory.ToString());
             var isWarehourseActive = ui.IsActive(UIWindows.Warehouse.ToString());
-            var isShopActive = !string.IsNullOrEmpty(ui.GetCurrentShopPage());
+            var isShopActive = ui.IsActive(UIWindows.Shop.ToString());
 
             if (Input.GetKeyDown(KeyCode.X) && isInventoryActive)
             {
@@ -37,24 +35,23 @@ namespace InteractionFix.Patches
             //    ui.transform.Find("Canvas/Ask/NewAskWindow(Clone)/SellPerCondition").gameObject.GetComponent<AskWindowBehaviour>().CloseWindow();
             //}
 
-            if (Input.GetKeyDown(KeyCode.Mouse3) && !isShopActive)
+            if (Input.GetKeyDown(KeyCode.Mouse3))
             {
                 if (isInventoryActive) ui.PrevCategoryInInventory();
                 if (isWarehourseActive) ui.PrevCategoryInWarehouse();
                 if (isShopActive)
                 {
-                    lastShop = ui.GetCurrentShopPage();
                     ui.BackToHomePage();
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse4) && !isShopActive)
+            if (Input.GetKeyDown(KeyCode.Mouse4))
             {
                 if (isInventoryActive) ui.NextCategoryInInventory();
                 if (isWarehourseActive) ui.NextCategoryInWarehouse();
-                if (isShopActive && !string.IsNullOrEmpty(lastShop))
+                if (isShopActive)
                 {
-                    ui.OpenShop(lastShop);
+                    ui.OpenPrevPage();
                 }
             }
 
