@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Harmony12;
 
 namespace InteractionFix.Patches
@@ -27,26 +28,35 @@ namespace InteractionFix.Patches
             }
 
             var uiManager = UIManager.Get();
+            
+            var isWindowActive = uiManager.IsWindowActive(windowToToggle);
+            if (!isWindowActive)
+            {
+                if (!isButtonDown)
+                {
+                    currentlyToggledWindows.Remove(windowToToggle);
+                }
+                return;
+            }
+
             if (!isButtonDown)
             {
                 return;
             }
-            var isWindowActive = uiManager.IsWindowActive(windowToToggle);
-            if (!isWindowActive)
-            {
-                return;
-            }
+
+            Main.Logger.Log("CurrentlyToggled: " + string.Join(", ", currentlyToggledWindows.Select(x => x.ToString()).ToArray()));
 
             if (!currentlyToggledWindows.Contains(windowToToggle))
             {
+                Main.Logger.Log(windowToToggle.ToString() + " opened.");
                 currentlyToggledWindows.Add(windowToToggle);
             }
             else
             {
+                Main.Logger.Log("Hiding " + windowToToggle.ToString());
                 currentlyToggledWindows.Remove(windowToToggle);
                 uiManager.Hide(windowToToggle.ToString());
             }
         }
     }
-
 }

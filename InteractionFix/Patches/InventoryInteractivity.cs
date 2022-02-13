@@ -1,4 +1,4 @@
-using System;
+using System.Reflection;
 using Harmony12;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +8,8 @@ namespace InteractionFix.Patches
     [HarmonyPatch(typeof(GameScript), "Update")]
     internal class InventoryInteractivity
     {
+        private static string lastShop;
+
         [HarmonyPrefix]
         internal static void Update()
         {
@@ -21,7 +23,7 @@ namespace InteractionFix.Patches
 
             var isInventoryActive = ui.IsActive(UIWindows.Inventory.ToString());
             var isWarehourseActive = ui.IsActive(UIWindows.Warehouse.ToString());
-            var isShopActive = ui.IsActive(UIWindows.Shop.ToString());
+            var isShopActive = !string.IsNullOrEmpty(ui.GetCurrentShopPage());
 
             if (Input.GetKeyDown(KeyCode.X) && isInventoryActive)
             {
@@ -35,46 +37,63 @@ namespace InteractionFix.Patches
             //    ui.transform.Find("Canvas/Ask/NewAskWindow(Clone)/SellPerCondition").gameObject.GetComponent<AskWindowBehaviour>().CloseWindow();
             //}
 
+            if (Input.GetKeyDown(KeyCode.Mouse3) && !isShopActive)
+            {
+                if (isInventoryActive) ui.PrevCategoryInInventory();
+                if (isWarehourseActive) ui.PrevCategoryInWarehouse();
+                if (isShopActive)
+                {
+                    lastShop = ui.GetCurrentShopPage();
+                    ui.BackToHomePage();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse4) && !isShopActive)
+            {
+                if (isInventoryActive) ui.NextCategoryInInventory();
+                if (isWarehourseActive) ui.NextCategoryInWarehouse();
+                if (isShopActive && !string.IsNullOrEmpty(lastShop))
+                {
+                    ui.OpenShop(lastShop);
+                }
+            }
+
             var isKeyboardUsed = ui.IsActive("Ask") || ui.IsActive("SortingMenu") ||
                 ui.IsShopSearchFieldFocused() || ui.IsInventorySearchFieldFocused() || ui.IsWarehouseSearchFieldFocused();
 
             if (!isKeyboardUsed)
             {
-                if (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.Z))
-                {
-                    if (isInventoryActive) ui.PrevCategoryInInventory();
-                    if (isWarehourseActive) ui.PrevCategoryInWarehouse();
-                    if (isShopActive) ui.PrevCategoryInShop();
-                }
-
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    if (isInventoryActive) ui.NextCategoryInInventory();
-                    if (isWarehourseActive) ui.NextCategoryInWarehouse();
-                    if (isShopActive) ui.NextCategoryInShop();
-                }
-
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    Main.Logger.Log("F pressed");
+
                     if (isInventoryActive) ActivateSearch("Inventory");
                     if (isWarehourseActive) ActivateSearch("Warehouse");
                     if (isShopActive)
                     {
-                        // TODO: Does not work :(
-                        foreach (var shopID in Enum.GetNames(typeof(ShopID)))
+                        Main.Logger.Log("F pressed in shop");
+                        // THIS JUST DOES NOT WORK :(
+                        try
                         {
-                            ActivateSearch("Shop", shopID);                            
+                            var gridManager = ui.GetType()
+                                .GetField("currentShopPageGridManager", BindingFlags.NonPublic | BindingFlags.Instance)
+                                .GetValue(ui) as UIGridManager;
+                            gridManager.DeselectCurrent();
+                            gridManager.SetEnabled(false);
+                        } catch (System.Exception e)
+                        {
+                            Main.Logger.LogException(e);
                         }
+                        ActivateSearch("Shop", ui.GetCurrentShopPage());
                     }
-                    
                 }
             }
         }
 
         private static void ActivateSearch(string canvasName, string name = null)
         {
-            var component = UIManager.Get().transform.parent.Find($"Canvas{canvasName}/{name ?? canvasName}/InputField").GetComponent<InputField>();
+            var key = $"Canvas{canvasName}/{name ?? canvasName}/InputField";
+            Main.Logger.Log(key);
+            var component = UIManager.Get().transform.parent.Find(key).GetComponent<InputField>();
             component.text = string.Empty;
             component.ActivateInputField();
         }

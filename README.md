@@ -6,17 +6,18 @@ Most of the patch logic was however written from scratch, and more interaction f
 ### Features:
 - Enables the game to run in background.
 - Mouse lock is disabled when ingame cusror is visible.
-- Bypassed cursor movement smoothing. Game cursor position is the same as system cursor position, but the cursor is still rendered by the game and therefore can be inaccurate when on low fps
+- Bypassed cursor movement smoothing. Game cursor position is the same as system cursor position, but the cursor is still rendered by the game and therefore may lag at low fps
 - Start straight to main menu (needs UMM configuration change - see below)
 - Pause menu key toggle (ESC), inventory key toggle (I)
 - Inventory/Warehouse/Shop hotkeys
   - R - Sell Parts
-  - Y/Z - Switch to previous / next category
   - F - Focus search
+  - Mouse side buttons Forward and Back
+    - In shop, go forward (last opened shop) and back (homepage)
+    - In Inventory / Warehouse - switch category
 
 
 ### Known issues:
-- Closing inventory by ESC and opening it back by I is weird, needs 2 key presses
 - F to focus search in shop does not work
 
 ### How to use
@@ -31,14 +32,14 @@ Most of the patch logic was however written from scratch, and more interaction f
 9. Run the game, mod manager should open and should show InteractionFix as enabled
 
 ### Start straight to main menu 
- Default UMM configuration for CMS2018 injects mods when main menu is loaded. For this mod to be enabled to skip intros, this has to be changed.
+ Default UMM configuration for CMS2018 injects mods when main menu is loaded. To enable this mod to skip intros, this has to be changed.
 1. In UnityModManager folder, open UnityModManagerConfig.xml
 2. Find "Car Mechanic Simulator 2018" GameInfo entry
-3. Change the configuration to this:
+3. Change the configuration to look like this:
 ```
 <EntryPoint>[Assembly-CSharp-firstpass.dll]IntroPlayer.Awake:After</EntryPoint>
 <StartingPoint>[Assembly-CSharp-firstpass.dll]IntroPlayer.Awake:After</StartingPoint>
 <UIStartingPoint>[Assembly-CSharp-firstpass.dll]MainMenuManager.Awake:After</UIStartingPoint>
 ```
-4. Open UnityModManager and press Uninstall, then Reinstall, so that the new configuration is used
-5. Open CMS2018 and press space bar -> the game should skip directly to main menu
+4. Open UnityModManager and press Uninstall, then Install again, so that the new configuration is used
+5. Open CMS2018 -> the game should skip directly to main menu
