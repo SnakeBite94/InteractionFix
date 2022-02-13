@@ -62,9 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\TransformDump.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\BackgroundExecution.cs" />
-    <Compile Include="Patches\InventoryInteractivity.cs" />
+    <Compile Include="Patches\FastScreenFader.cs" />
+    <Compile Include="Patches\BetterInteractivity.cs" />
     <Compile Include="Patches\ToggleWindows.cs" />
     <Compile Include="Patches\MouseLock.cs" />
     <Compile Include="Patches\MouseMovement.cs" />
@@ -78,6 +80,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir $(SolutionDir)PublishOutput\

@@ -7,7 +7,6 @@ Most of the patch logic was however written from scratch, and more interaction f
 - Enables the game to run in background.
 - Mouse lock is disabled when ingame cusror is visible.
 - Bypassed cursor movement smoothing. Game cursor position is the same as system cursor position, but the cursor is still rendered by the game and therefore may lag at low fps
-- Start straight to main menu (needs UMM configuration change - see below)
 - Pause menu key toggle (ESC), inventory key toggle (I)
 - Inventory/Warehouse/Shop hotkeys
   - R - Sell Parts
@@ -15,6 +14,8 @@ Most of the patch logic was however written from scratch, and more interaction f
   - Mouse side buttons Forward and Back
     - In shop, go forward (last opened shop) and back (homepage)
     - In Inventory / Warehouse - switch category
+- Start straight to main menu (needs UMM configuration change - see below)
+- All fades to/from black 4x faster
 
 
 ### Known issues:
