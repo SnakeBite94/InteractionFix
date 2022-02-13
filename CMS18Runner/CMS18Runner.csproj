@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InteractionFix\InteractionFix.csproj">
+      <Project>{5f353c2c-73d3-45a3-9a12-b87f114acac9}</Project>
+      <Name>InteractionFix</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

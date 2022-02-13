@@ -5,9 +5,13 @@ namespace InteractionFix.ModSettings
 {
     public class Settings : UnityModManager.ModSettings
     {
-        public bool RunInBackground { get; set; }
-        public bool UnlockMouse { get; set; }
-        public bool DisableMouseSmoothing { get; set; }
+        public bool RunInBackground { get; set; } = true;
+        public bool UnlockMouse { get; set; } = true;
+        public bool DisableMouseSmoothing { get; set; } = true;
+        public bool SkipIntroBySpace { get; set; } = true;
+        public bool TogglePauseQuitMenu { get; set; } = true;
+        public bool ToggleInventory { get; set; } = true;
+        public bool InventoryInteractivity { get; set; } = true;
 
         public override void Save(ModEntry modEntry)
         {

@@ -2,13 +2,12 @@ using Harmony12;
 using UnityEngine;
 
 namespace InteractionFix
-{
-    [HarmonyPatch(typeof(Cursor3D))]
-    [HarmonyPatch("NormalCursorLock")]
-    [HarmonyPatch(new[] { typeof(bool) })]
+{    
+    [HarmonyPatch(typeof(Cursor3D), "NormalCursorLock", new[] { typeof(bool) })]
     internal class MouseLock
     {
-        public static bool Prefix(bool isLocked, ref bool ___cursorIsEnable)
+        [HarmonyPrefix]
+        internal static bool NormalCursorLock(bool isLocked, ref bool ___cursorIsEnable)
         {
             if (!Main.Enabled) // this Patch has to run regardless of its setting... It fixes mouse behavior in game.
             {
@@ -25,8 +24,9 @@ namespace InteractionFix
             if (___cursorIsEnable)
             {
                 Cursor.lockState = Main.Settings.UnlockMouse ? CursorLockMode.None : CursorLockMode.Confined;
-            } else
-            {                
+            }
+            else
+            {
                 Cursor.lockState = CursorLockMode.Locked;
             }
             return false; // we completely change NormalCursorLock
