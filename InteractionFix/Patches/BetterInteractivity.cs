@@ -19,7 +19,6 @@ namespace InteractionFix.Patches
 
             var im = Singleton<InputManager>.Instance;
             var ui = UIManager.Get();
-
             var isInventoryActive = ui.IsWindowActive(UIWindows.Inventory);
             var isWarehourseActive = ui.IsWindowActive(UIWindows.Warehouse);
             var isShopActive = ui.IsWindowActive(UIWindows.Shop);
@@ -32,7 +31,7 @@ namespace InteractionFix.Patches
             if (im.GameplayMechanicExitButtonDown() && ui.IsActive("Ask"))
             {
                 try
-                {                   
+                {
                     // Does not work :( I have no idea why
                     ui.transform.FindDeepChild("NoButton").GetComponent<AskWindowBehaviour>().CloseWindow();
                 }
@@ -40,7 +39,6 @@ namespace InteractionFix.Patches
                 {
                     Main.Logger.Log(e.ToString());
                 }
-                
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse3))
@@ -64,10 +62,12 @@ namespace InteractionFix.Patches
             }
 
             var isKeyboardUsed = ui.IsWindowActive(UIWindows.Ask) || ui.IsWindowActive(UIWindows.SortingMenu) ||
-                ui.IsShopSearchFieldFocused() || ui.IsInventorySearchFieldFocused() || ui.IsWarehouseSearchFieldFocused();
+                (ui.IsWindowActive(UIWindows.Shop) && ui.IsShopSearchFieldFocused()) ||
+                (ui.IsWindowActive(UIWindows.Inventory) && ui.IsInventorySearchFieldFocused()) ||
+                (ui.IsWindowActive(UIWindows.Warehouse) && ui.IsWarehouseSearchFieldFocused());
 
             if (Input.GetKeyDown(KeyCode.F))
-            {                
+            {
                 if (isInventoryActive && !isKeyboardUsed) ActivateSearch("Inventory");
                 if (isWarehourseActive && !isKeyboardUsed) ActivateSearch("Warehouse");
                 if (isShopActive && !isKeyboardUsed) ActivateShhopSearch(ui);
@@ -77,7 +77,8 @@ namespace InteractionFix.Patches
                     {
                         Main.Logger.Log("Finish order!");
                         ui.transform.Find("CarInfo/FinishOrderRow/FinishOrderButton").GetComponent<ButtonAction>().SimulateClick();
-                    } catch (Exception e)
+                    }
+                    catch (Exception e)
                     {
                         Main.Logger.LogException(e);
                     }
