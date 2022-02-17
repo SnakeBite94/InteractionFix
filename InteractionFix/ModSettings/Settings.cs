@@ -14,6 +14,7 @@ namespace InteractionFix.ModSettings
         public bool ToggleInventory { get; set; } = true;                
         public bool HotkeyInteractivity { get; set; } = true;
         public bool FasterFades { get; set; } = true;
+        public bool SkipCaseOpening { get; set; } = true;
 
         public override void Save(ModEntry modEntry)
         {

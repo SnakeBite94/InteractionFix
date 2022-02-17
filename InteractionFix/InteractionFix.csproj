@@ -46,6 +46,10 @@
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>G:\Steam\steamapps\common\Car Mechanic Simulator 2018\cms2018_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>G:\Steam\steamapps\common\Car Mechanic Simulator 2018\cms2018_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>G:\Steam\steamapps\common\Car Mechanic Simulator 2018\cms2018_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -64,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Helpers\TransformDump.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Patches\CaseOpeningInteractivity.cs" />
     <Compile Include="Patches\AskWindowCancelByEsc.cs" />
     <Compile Include="Patches\BackgroundExecution.cs" />
     <Compile Include="Patches\FastScreenFader.cs" />

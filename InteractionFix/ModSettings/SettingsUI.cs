@@ -34,6 +34,7 @@ namespace InteractionFix.ModSettings
 
             BeginVertical(Width(250));
             settings.FasterFades = Toggle(settings.FasterFades, " Faster fades to black (4x)");
+            settings.SkipCaseOpening = Toggle(settings.SkipCaseOpening, " Case opening hotkey animation skip");
             settings.SkipIntroBySpace = Toggle(settings.SkipIntroBySpace, " Skip straight to main menu (needs UMM config change)");
             EndVertical();
 

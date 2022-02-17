@@ -3,21 +3,24 @@ Mod that fixes several interacion issues in Car Mechanic Simulator 2018.
 This was originally a fork of MouseFix mod by Sauler (https://github.com/Sauler/MouseFix), just to move it to Unity Mod Manager.
 Most of the patch logic was however written from scratch, and more interaction functionality and fixes were added.
 
-### Features:
+### Features (configurable in UMM manager ingame)
 - Enables the game to run in background.
 - Mouse lock is disabled when ingame cusror is visible.
 - Bypassed cursor movement smoothing. Game cursor position is the same as system cursor position, but the cursor is still rendered by the game and therefore may lag at low fps
 - Pause menu key toggle (ESC), inventory key toggle (I)
-- Start game straight to main menu (needs UMM configuration change - see below)
-- All fades to/from black 4x faster
+
 - More hotkeys
-    - Enter (bindable) - Accept order (order list)
+    - Enter (bindable) - Accept order (order list) / Collect case items
     - Esc (bindable) - "No" or "Close" button in dialog popups
     - X - Sell Parts (inventory) / Decline Order (order list)
     - F - Focus search / Finish order (order details)
     - Mouse side buttons Forward and Back
         - Forward (last opened shop) and back (homepage) (shops)
         - Switch category (invenotry, warehouse)
+
+- Start game straight to main menu (needs UMM configuration change - see below)
+- All fades to/from black 4x faster
+- Case opening animation skip when using a hotkey
 
 ### Known issues:
 - F to focus search in shop does not work
