@@ -64,9 +64,11 @@
   <ItemGroup>
     <Compile Include="Helpers\TransformDump.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Patches\AskWindowCancelByEsc.cs" />
     <Compile Include="Patches\BackgroundExecution.cs" />
     <Compile Include="Patches\FastScreenFader.cs" />
     <Compile Include="Patches\BetterInteractivity.cs" />
+    <Compile Include="Patches\MenuOrdersInteractivity.cs" />
     <Compile Include="Patches\ToggleWindows.cs" />
     <Compile Include="Patches\MouseLock.cs" />
     <Compile Include="Patches\MouseMovement.cs" />

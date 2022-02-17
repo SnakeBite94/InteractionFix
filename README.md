@@ -8,15 +8,16 @@ Most of the patch logic was however written from scratch, and more interaction f
 - Mouse lock is disabled when ingame cusror is visible.
 - Bypassed cursor movement smoothing. Game cursor position is the same as system cursor position, but the cursor is still rendered by the game and therefore may lag at low fps
 - Pause menu key toggle (ESC), inventory key toggle (I)
-- Inventory/Warehouse/Shop hotkeys
-  - R - Sell Parts
-  - F - Focus search
-  - Mouse side buttons Forward and Back
-    - In shop, go forward (last opened shop) and back (homepage)
-    - In Inventory / Warehouse - switch category
-- Start straight to main menu (needs UMM configuration change - see below)
+- Start game straight to main menu (needs UMM configuration change - see below)
 - All fades to/from black 4x faster
-
+- More hotkeys
+    - Enter (bindable) - Accept order (order list)
+    - Esc (bindable) - "No" or "Close" button in dialog popups
+    - X - Sell Parts (inventory) / Decline Order (order list)
+    - F - Focus search / Finish order (order details)
+    - Mouse side buttons Forward and Back
+        - Forward (last opened shop) and back (homepage) (shops)
+        - Switch category (invenotry, warehouse)
 
 ### Known issues:
 - F to focus search in shop does not work

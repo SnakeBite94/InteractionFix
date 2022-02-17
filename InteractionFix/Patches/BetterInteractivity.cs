@@ -12,12 +12,11 @@ namespace InteractionFix.Patches
         [HarmonyPrefix]
         internal static void Update()
         {
-            if (!Main.Enabled || !Main.Settings.InventoryInteractivity)
+            if (!Main.Enabled || !Main.Settings.HotkeyInteractivity)
             {
                 return;
             }
 
-            var im = Singleton<InputManager>.Instance;
             var ui = UIManager.Get();
             var isInventoryActive = ui.IsWindowActive(UIWindows.Inventory);
             var isWarehourseActive = ui.IsWindowActive(UIWindows.Warehouse);
@@ -26,19 +25,6 @@ namespace InteractionFix.Patches
             if (Input.GetKeyDown(KeyCode.X) && isInventoryActive)
             {
                 ui.ShowSellPerConditionWindow();
-            }
-
-            if (im.GameplayMechanicExitButtonDown() && ui.IsActive("Ask"))
-            {
-                try
-                {
-                    // Does not work :( I have no idea why
-                    ui.transform.FindDeepChild("NoButton").GetComponent<AskWindowBehaviour>().CloseWindow();
-                }
-                catch (Exception e)
-                {
-                    Main.Logger.Log(e.ToString());
-                }
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse3))
@@ -70,7 +56,7 @@ namespace InteractionFix.Patches
             {
                 if (isInventoryActive && !isKeyboardUsed) ActivateSearch("Inventory");
                 if (isWarehourseActive && !isKeyboardUsed) ActivateSearch("Warehouse");
-                if (isShopActive && !isKeyboardUsed) ActivateShhopSearch(ui);
+                if (isShopActive && !isKeyboardUsed) ActivateShopSearch(ui);
                 if (ui.IsWindowActive(UIWindows.CarInfo))
                 {
                     try
@@ -86,7 +72,7 @@ namespace InteractionFix.Patches
             }
         }
 
-        private static void ActivateShhopSearch(UIManager ui)
+        private static void ActivateShopSearch(UIManager ui)
         {
             Main.Logger.Log("F pressed in shop");
             // THIS JUST DOES NOT WORK :(

@@ -29,7 +29,7 @@ namespace InteractionFix.ModSettings
             BeginVertical(Width(250));
             settings.TogglePauseQuitMenu = Toggle(settings.TogglePauseQuitMenu, " Pause menu key toggle mode");
             settings.ToggleInventory = Toggle(settings.ToggleInventory, " Inventory key toggle mode");
-            settings.InventoryInteractivity = Toggle(settings.InventoryInteractivity, " Enable inventory hotkeys (see readme)");
+            settings.HotkeyInteractivity = Toggle(settings.HotkeyInteractivity, " Enable GUI hotkeys (see readme)");
             EndVertical();
 
             BeginVertical(Width(250));

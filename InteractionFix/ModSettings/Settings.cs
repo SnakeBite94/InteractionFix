@@ -12,7 +12,7 @@ namespace InteractionFix.ModSettings
         public bool SkipIntroBySpace { get; set; } = true;
         public bool TogglePauseQuitMenu { get; set; } = true;
         public bool ToggleInventory { get; set; } = true;                
-        public bool InventoryInteractivity { get; set; } = true;
+        public bool HotkeyInteractivity { get; set; } = true;
         public bool FasterFades { get; set; } = true;
 
         public override void Save(ModEntry modEntry)
