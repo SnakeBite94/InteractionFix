@@ -22,7 +22,7 @@ namespace InteractionFix.Patches
             var isWarehourseActive = ui.IsWindowActive(UIWindows.Warehouse);
             var isShopActive = ui.IsWindowActive(UIWindows.Shop);
 
-            if (Input.GetKeyDown(KeyCode.X) && isInventoryActive)
+            if (Input.GetKeyDown(KeyCode.Q) && isInventoryActive)
             {
                 ui.ShowSellPerConditionWindow();
             }

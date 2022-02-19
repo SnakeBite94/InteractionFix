@@ -12,7 +12,8 @@ Most of the patch logic was however written from scratch, and more interaction f
 - More hotkeys
     - Enter (bindable) - Accept order (order list) / Collect case items
     - Esc (bindable) - "No" or "Close" button in dialog popups
-    - X - Sell Parts (inventory) / Decline Order (order list)
+    - Q - Sell Parts (inventory)
+    - X - Decline Order (order list) / Add item to shopping list (inventory - QoL mod compatible)
     - F - Focus search / Finish order (order details)
     - Mouse side buttons Forward and Back
         - Forward (last opened shop) and back (homepage) (shops)

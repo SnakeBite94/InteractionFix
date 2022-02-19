@@ -31,6 +31,7 @@ namespace InteractionFix.Patches
                     return;
                 }
                 OrderGenerator.Get().CancelJob(component.job.id);
+                AchievementSystem.Get().IncrementStat(13, 1);
                 UnityEngine.Object.Destroy(child.gameObject);
             }
 

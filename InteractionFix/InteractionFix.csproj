@@ -78,6 +78,7 @@
     <Compile Include="Patches\MouseLock.cs" />
     <Compile Include="Patches\MouseMovement.cs" />
     <Compile Include="Patches\SkipIntro.cs" />
+    <Compile Include="Patches\XAsRightClickInInventory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModSettings\Settings.cs" />
     <Compile Include="ModSettings\SettingsUI.cs" />
