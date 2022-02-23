@@ -15,6 +15,7 @@ namespace InteractionFix.ModSettings
         public bool HotkeyInteractivity { get; set; } = true;
         public bool FasterFades { get; set; } = true;
         public bool SkipCaseOpening { get; set; } = true;
+        public bool MakeUnrepairablePurple { get; set; } = false;
 
         public override void Save(ModEntry modEntry)
         {

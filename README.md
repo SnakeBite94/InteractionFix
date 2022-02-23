@@ -23,6 +23,8 @@ Most of the patch logic was however written from scratch, and more interaction f
 - All fades to/from black 4x faster
 - Case opening animation skip when using a hotkey
 
+- Make condition less than 15% purple (cheat?)
+
 ### Known issues:
 - F to focus search in shop does not work
 

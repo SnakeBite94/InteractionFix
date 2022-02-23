@@ -71,6 +71,7 @@
     <Compile Include="Patches\CaseOpeningInteractivity.cs" />
     <Compile Include="Patches\AskWindowCancelByEsc.cs" />
     <Compile Include="Patches\BackgroundExecution.cs" />
+    <Compile Include="Patches\ConditionColorHelper.cs" />
     <Compile Include="Patches\FastScreenFader.cs" />
     <Compile Include="Patches\BetterInteractivity.cs" />
     <Compile Include="Patches\MenuOrdersInteractivity.cs" />
