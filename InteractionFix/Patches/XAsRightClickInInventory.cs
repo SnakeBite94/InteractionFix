@@ -18,7 +18,7 @@ namespace InteractionFix.Patches
             var isInventoryActive = ui.IsWindowActive(UIWindows.Inventory);
             if (Input.GetKeyDown(KeyCode.X) && isInventoryActive)
             {
-                Main.Logger.Log("Right click");
+                Main.Log("Right click");
                 //GetLastPointerEventData(-1)
                 //ui.RightClickInInventory();
                 var eventData = new PointerEventData(EventSystem.current);

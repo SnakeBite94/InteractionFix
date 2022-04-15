@@ -12,8 +12,6 @@ namespace InteractionFix
         public static Settings Settings { get; private set; }
         public static bool Enabled { get; private set; }
 
-        public static ModEntry.ModLogger Logger => mod.Logger;
-
         public static bool Load(ModEntry modEntry)
         {
             mod = modEntry;
@@ -25,6 +23,16 @@ namespace InteractionFix
             mod.OnGUI = OnGUI;
             mod.OnSaveGUI = OnSaveGUI;
             return true;
+        }
+
+        internal static void Log(string what)
+        {
+            mod.Logger.Log("InteractionFix: " + what);
+        }
+
+        internal static void LogException(Exception e)
+        {
+            mod.Logger.LogException(e);
         }
 
         private static bool OnToggle(ModEntry mod, bool value)
@@ -55,5 +63,6 @@ namespace InteractionFix
                 mod.Logger.Error(e.ToString());
             }
         }
+
     }
 }

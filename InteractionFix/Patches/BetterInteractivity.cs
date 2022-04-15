@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace InteractionFix.Patches
 {
-    [HarmonyPatch(typeof(GameScript), "Update")]
+    [HarmonyPatch(typeof(GameScript), nameof(Update))]
     internal class BetterInteractivity
     {
         [HarmonyPrefix]
@@ -59,21 +59,22 @@ namespace InteractionFix.Patches
                 if (isShopActive && !isKeyboardUsed) ActivateShopSearch(ui);
                 if (ui.IsWindowActive(UIWindows.CarInfo))
                 {
-                    Main.Logger.Log("F");
                     var window = ui.transform.Find("CarInfo").GetComponent<CarInfoWindow>();
-                    if (window.CurrentWindowType == WindowType.CarInfo)
+                    var currentWindowType = UIManagerHook.CurrentWindowType;
+                    Main.Log("F - " + currentWindowType);
+                    if (currentWindowType == WindowType.CarInfo)
                     {
                         window.transform.Find("SellCarRow/SellButton").GetComponent<ButtonAction>().SimulateClick();
                     }
-                    else if (window.CurrentWindowType == WindowType.CarBuy)
+                    else if (currentWindowType == WindowType.CarBuy)
                     {
                         window.transform.Find("BuyCarRow/BuyButton").GetComponent<ButtonAction>().SimulateClick();
                     }
-                    else if (window.CurrentWindowType == WindowType.CarParking)
+                    else if (currentWindowType == WindowType.CarParking)
                     {
                         window.transform.Find("MoveCarRow/MoveToGarageButton").GetComponent<ButtonAction>().SimulateClick();
                     }
-                    else if (window.CurrentWindowType == WindowType.CheckOrder)
+                    else if (currentWindowType == WindowType.CheckOrder)
                     {
                         window.transform.Find("FinishOrderRow/FinishOrderButton").GetComponent<ButtonAction>().SimulateClick();
                     }                    
@@ -83,7 +84,7 @@ namespace InteractionFix.Patches
 
         private static void ActivateShopSearch(UIManager ui)
         {
-            Main.Logger.Log("F pressed in shop");
+            Main.Log("F pressed in shop");
             // THIS JUST DOES NOT WORK :(
             try
             {
@@ -95,7 +96,7 @@ namespace InteractionFix.Patches
             }
             catch (System.Exception e)
             {
-                Main.Logger.LogException(e);
+                Main.LogException(e);
             }
             ActivateSearch("Shop", ui.GetCurrentShopPage());
         }
@@ -103,10 +104,23 @@ namespace InteractionFix.Patches
         private static void ActivateSearch(string canvasName, string name = null)
         {
             var key = $"Canvas{canvasName}/{name ?? canvasName}/InputField";
-            Main.Logger.Log(key);
+            Main.Log(key);
             var component = UIManager.Get().transform.parent.Find(key).GetComponent<InputField>();
             component.text = string.Empty;
             component.ActivateInputField();
+        }
+    }
+
+    [HarmonyPatch(typeof(UIManager), nameof(PrepareCarInfoMenu))]
+    internal class UIManagerHook
+    {
+        public static WindowType CurrentWindowType { get; private set; }
+
+        [HarmonyPrefix]
+        internal static void PrepareCarInfoMenu(CarLoader carLoader, WindowType windowType)
+        {
+            Main.Log(windowType + " opened");
+            UIManagerHook.CurrentWindowType = windowType;
         }
     }
 }

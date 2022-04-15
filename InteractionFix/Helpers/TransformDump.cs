@@ -12,16 +12,16 @@ namespace InteractionFix
         {
             if (indent == 0)
             {
-                Main.Logger.Log("-- Transform dump start --");
+                Main.Log("-- Transform dump start --");
             }
-            Main.Logger.Log(new string(' ', indent) + transform.ToString());
+            Main.Log(new string(' ', indent) + transform.ToString());
             foreach (var t in transform.OfType<Transform>())
             {
                 t.Dump(indent + 1);
             }
             if (indent == 0)
             {
-                Main.Logger.Log("-- Transform dump end --");
+                Main.Log("-- Transform dump end --");
             }
         }
     }

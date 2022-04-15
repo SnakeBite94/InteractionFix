@@ -27,7 +27,7 @@ namespace InteractionFix.Patches
             var im = Singleton<InputManager>.Instance;
             if (im.GameplayMechanicExitButtonDown())
             {
-                Main.Logger.Log("ButtonCancel");
+                Main.Log("ButtonCancel");
                 __instance.ButtonCancel();
             }
         }

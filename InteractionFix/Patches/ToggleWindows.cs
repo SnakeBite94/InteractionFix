@@ -44,16 +44,16 @@ namespace InteractionFix.Patches
                 return;
             }
 
-            Main.Logger.Log("CurrentlyToggled: " + string.Join(", ", currentlyToggledWindows.Select(x => x.ToString()).ToArray()));
+            Main.Log("CurrentlyToggled: " + string.Join(", ", currentlyToggledWindows.Select(x => x.ToString()).ToArray()));
 
             if (!currentlyToggledWindows.Contains(windowToToggle))
             {
-                Main.Logger.Log(windowToToggle.ToString() + " opened.");
+                Main.Log(windowToToggle.ToString() + " opened.");
                 currentlyToggledWindows.Add(windowToToggle);
             }
             else
             {
-                Main.Logger.Log("Hiding " + windowToToggle.ToString());
+                Main.Log("Hiding " + windowToToggle.ToString());
                 currentlyToggledWindows.Remove(windowToToggle);
                 uiManager.Hide(windowToToggle.ToString());
             }
