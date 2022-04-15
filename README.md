@@ -14,7 +14,9 @@ Most of the patch logic was however written from scratch, and more interaction f
     - Esc (bindable) - "No" or "Close" button in dialog popups
     - Q - Sell Parts (inventory)
     - X - Decline Order (order list) / Add item to shopping list (inventory - QoL mod compatible)
-    - F - Focus search / Finish order (order details)
+    - F
+        - Focus search 
+        - Finish order / sell / buy / move car to garage (order details / car info)
     - Mouse side buttons Forward and Back
         - Forward (last opened shop) and back (homepage) (shops)
         - Switch category (invenotry, warehouse)

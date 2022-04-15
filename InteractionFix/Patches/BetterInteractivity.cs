@@ -59,15 +59,24 @@ namespace InteractionFix.Patches
                 if (isShopActive && !isKeyboardUsed) ActivateShopSearch(ui);
                 if (ui.IsWindowActive(UIWindows.CarInfo))
                 {
-                    try
+                    Main.Logger.Log("F");
+                    var window = ui.transform.Find("CarInfo").GetComponent<CarInfoWindow>();
+                    if (window.CurrentWindowType == WindowType.CarInfo)
                     {
-                        Main.Logger.Log("Finish order!");
-                        ui.transform.Find("CarInfo/FinishOrderRow/FinishOrderButton").GetComponent<ButtonAction>().SimulateClick();
+                        window.transform.Find("SellCarRow/SellButton").GetComponent<ButtonAction>().SimulateClick();
                     }
-                    catch (Exception e)
+                    else if (window.CurrentWindowType == WindowType.CarBuy)
                     {
-                        Main.Logger.LogException(e);
+                        window.transform.Find("BuyCarRow/BuyButton").GetComponent<ButtonAction>().SimulateClick();
                     }
+                    else if (window.CurrentWindowType == WindowType.CarParking)
+                    {
+                        window.transform.Find("MoveCarRow/MoveToGarageButton").GetComponent<ButtonAction>().SimulateClick();
+                    }
+                    else if (window.CurrentWindowType == WindowType.CheckOrder)
+                    {
+                        window.transform.Find("FinishOrderRow/FinishOrderButton").GetComponent<ButtonAction>().SimulateClick();
+                    }                    
                 }
             }
         }

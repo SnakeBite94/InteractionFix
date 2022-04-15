@@ -30,7 +30,7 @@ namespace InteractionFix.ModSettings
             EndVertical();
 
             BeginVertical(Width(250));
-            settings.FasterFades = Toggle(settings.FasterFades, " Faster fades to black (4x)");
+            settings.FasterFades = Toggle(settings.FasterFades, " Faster fades to black (8x)");
             settings.SkipCaseOpening = Toggle(settings.SkipCaseOpening, " Hotkey case opening skip");
             settings.SkipIntroBySpace = Toggle(settings.SkipIntroBySpace, " Skip straight to main menu (see readme!)");
             settings.MakeUnrepairablePurple = Toggle(settings.MakeUnrepairablePurple, " Purple condition <15% (cheat?)");

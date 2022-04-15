@@ -17,7 +17,7 @@ namespace InteractionFix.Patches
                 return true;
             }
 
-            time = time / 4;
+            time = time / 8;
 
             return true;
         }
